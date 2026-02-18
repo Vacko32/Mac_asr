@@ -80,9 +80,10 @@ Training supports DDP for distributed training. Only the connector parameters ar
 - Hardcoded encoder parts and no support for processor.
 
 - General LLMS do not work for now.
+
 ## Results
 
-The config is public in file config_qwen.toml, it uses Qwen3-1.7B model. This checkpoint was trained on 7k hours of audio. Results with beam_search = 4:
+My model was trained on 7k hours of audio for one epoch on H100. Results with beam_search = 4:
 
 | Dataset | Corpus WER |
 |---------|-----------|
