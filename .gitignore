@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+.venv/
+venv/
+
+# Environment / secrets
+.env
+*.env
+
+# Tool config
+.python-version
+uv.lock
+
+# Checkpoints / model weights
+checkpoint/
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# Logs
+*.log
+wandb/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

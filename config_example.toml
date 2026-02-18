@@ -1,0 +1,62 @@
+[training]
+epochs = 8
+batch_size = 4
+learning_rate = 2e-4
+checkpoint_dir = "checkpoint"
+validation_interval = 1500
+log_interval = 10
+validation_samples = 500
+gradient_accumulation = 12
+debug = false
+debug_log_every = 200
+save_every = 0  # Save checkpoint every X steps (0 = disabled)
+
+# Resume from checkpoint
+resume = false
+resume_checkpoint = ""
+reset_optimizer = false
+reset_early_stopping = true
+
+[early_stopping]
+patience = 5
+
+[model]
+model_id = 1
+encoder = "whisper"
+llm = "qwen"               # "qwen" | "gemma" | any HuggingFace model ID
+connector = "transformer"  # "linear" | "transformer" | "qformer"
+downsample_factor = 4
+freeze_encoder = true
+use_lora = false
+dtype = "bfloat16"
+
+[optimizer]
+beta1 = 0.9
+beta2 = 0.98
+
+[lr_schedule]
+warmup_steps = 1500
+min_lr = 3e-9
+
+[loss]
+label_smoothing = 0.0
+gradient_clip_norm = 5.0 # I recommend 5.0 based on experiments
+
+[dataset]
+name = ["openslr/librispeech_asr", "openslr/librispeech_asr", "openslr/librispeech_asr"]
+load_from_disk_validation_path = [""]
+language = ["all", "all", "all"]
+split = ["train.clean.100", "train.other.500", "train.clean.360"]
+validation_split = ["validation.other"]
+streaming = false
+load_from_disk = [false, false, false]
+mapping_file_train = ["", "", ""]
+mapping_file_val = ["", "", ""]
+
+[wandb]
+project = "MAC framework"
+enabled = true
+
+[auth]
+hf_token = "" # Fallback if HF_TOKEN env var is not set
+wandb_key = "" # Fallback if WANDB_KEY env var is not set
